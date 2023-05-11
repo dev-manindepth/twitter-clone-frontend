@@ -1,0 +1,65 @@
+.tweet-actions-wrapper {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.tweet-actions {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.tweet-action-comment,
+.tweet-action-retweets,
+.tweet-action-like,
+.tweet-action-view,
+.tweet-action-share {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  color: #7c7c7c;
+}
+
+.tweet-action-comment:hover,
+.tweet-action-retweets:hover,
+.tweet-action-like:hover,
+.tweet-action-view:hover,
+.tweet-action-share:hover {
+  color: #1d9bf0;
+  fill: #1d9bf0;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .tweet-actions {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .tweet-actions {
+    gap: 1.4rem;
+  }
+}
+
+@media (max-width: 475px) {
+  .tweet-actions {
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .tweet-action-view {
+    display: none;
+  }
+  .tweet-actions-wrapper {
+    justify-content: center;
+  }
+  .tweet-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

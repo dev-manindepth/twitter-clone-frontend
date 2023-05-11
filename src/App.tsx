@@ -1,13 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BottomNav } from "./components/BottomNav/BottomNav";
+import Feed from "./components/Feed/Feed";
+import RightMenu from "./components/RightMenu/RightMenu";
+import SideNav from "./components/SideNav/SideNav";
 
 function App() {
-  return (
-    <div className="App">
-      Twitter Clone 
-    </div>
-  );
+  return <div className="container">
+    <SideNav/>
+    <Feed/>
+    <RightMenu/>
+    <BottomNav/>
+  </div>;
 }
 
 export default App;
