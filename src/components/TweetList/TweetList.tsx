@@ -10,7 +10,7 @@ const TweetList = () => {
       {tweets &&
         tweets.length > 0 &&
         tweets.map((tweet: any) => {
-          return <Tweet tweet={tweet} />;
+          return <Tweet tweet={tweet} key={tweet.id}/>;
         })}
     </div>
   );

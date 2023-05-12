@@ -10,6 +10,7 @@ export const fakeTweetsFetch = (url) => {
             avatar:
               "https://pbs.twimg.com/profile_images/1614470877432938499/VpfrV5sX_x96.jpg",
             text: "Learn more about web design leveragin UI/UX",
+            blueTick:true,
             comment: [
               {
                 postId: "manish",
@@ -73,6 +74,7 @@ export const fakeTweetsFetch = (url) => {
             createdAt: "5h",
             avatar: "https://randomuser.me/api/portraits/women/72.jpg",
             text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit quis nesciunt illo earum modi voluptatibus debitis nihil itaque nam minus consequuntur asperiores obcaecati hic repellendus, quae facere? Modi, deleniti quaerat.This is my first tweet",
+            blueTick:false,
             comment: [
               {
                 postId: "roberthelo",
@@ -122,6 +124,7 @@ export const fakeTweetsFetch = (url) => {
             createdAt: "5h",
             avatar: "https://randomuser.me/api/portraits/women/88.jpg",
             text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit quis nesciunt illo earum modi voluptatibus debitis nihil itaque nam minus consequuntur asperiores obcaecati hic repellendus, quae facere? Modi, deleniti quaerat.This is my first tweet",
+            blueTick:true,
             comment: [
               {
                 postId: "neha",
@@ -171,6 +174,7 @@ export const fakeTweetsFetch = (url) => {
             createdAt: "5h",
             avatar: "https://randomuser.me/api/portraits/men/57.jpg",
             text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit quis nesciunt illo earum modi voluptatibus debitis nihil itaque nam minus consequuntur asperiores obcaecati hic repellendus, quae facere? Modi, deleniti quaerat.This is my first tweet",
+            blueTick:true,
             comment: [
               {
                 postId: "johndoe",
@@ -233,6 +237,7 @@ export const fakeTweetsFetch = (url) => {
             createdAt: "5h",
             avatar: "https://randomuser.me/api/portraits/men/80.jpg",
             text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit quis nesciunt illo earum modi voluptatibus debitis nihil itaque nam minus consequuntur asperiores obcaecati hic repellendus, quae facere? Modi, deleniti quaerat.This is my first tweet",
+            blueTick:false,
             comment: [
               {
                 userId: "albert",
@@ -325,6 +330,7 @@ export const fakeTweetsFetch = (url) => {
             createdAt: "1h",
             avatar: "https://randomuser.me/api/portraits/men/77.jpg",
             text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit quis nesciunt illo earum modi voluptatibus debitis nihil itaque nam minus consequuntur asperiores obcaecati hic repellendus, quae facere? Modi, deleniti quaerat.This is my first tweet",
+            blueTick:true,
             comment: [
               {
                 postId: "rohan",
@@ -389,6 +395,7 @@ export const fakeTweetsFetch = (url) => {
             avatar:
               "https://pbs.twimg.com/profile_images/1614470877432938499/VpfrV5sX_x96.jpg",
             text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit quis nesciunt illo earum modi voluptatibus debitis nihil itaque nam minus consequuntur asperiores obcaecati hic repellendus, quae facere? Modi, deleniti quaerat.This is my first tweet",
+            blueTick:true,
             comment: [],
             retweets: 12,
             like: 15,
@@ -403,6 +410,7 @@ export const fakeTweetsFetch = (url) => {
             avatar:
               "https://pbs.twimg.com/profile_images/1614470877432938499/VpfrV5sX_x96.jpg",
             text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit quis nesciunt illo earum modi voluptatibus debitis nihil itaque nam minus consequuntur asperiores obcaecati hic repellendus, quae facere? Modi, deleniti quaerat.This is my first tweet",
+            blueTick:true,
             comment: [],
             retweets: 12,
             like: 15,

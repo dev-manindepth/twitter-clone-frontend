@@ -7,7 +7,7 @@ export const BottomNav = () => {
       <div className="bottom-nav-item">
         {bottomNavData.map(({ id, img, className }) => {
           return (
-            <div className="bottom-nav-item-icon">
+            <div className="bottom-nav-item-icon" key={id}>
               <img src={img} alt="" className={className} />
             </div>
           );

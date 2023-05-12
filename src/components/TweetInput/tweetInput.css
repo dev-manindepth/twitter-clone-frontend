@@ -65,4 +65,7 @@
   .tweet-input-calendar {
     display: none;
   }
+  .tweet-input{
+    font-size: 1.2rem;
+  }
 }

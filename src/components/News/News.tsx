@@ -1,4 +1,5 @@
 import { newsData } from "../../data";
+import { More } from "../SVG/Icon";
 import "./news.css";
 
 const News: React.FC = () => {
@@ -15,13 +16,11 @@ const News: React.FC = () => {
                 <div className="news-events-category">
                   <span>{news?.category}</span> <span>{news?.event}</span>
                 </div>
-                <div className="news-description">
-              {news.desc}
-                </div>
+                <div className="news-description">{news.desc}</div>
 
                 {news.tag && news.tag.length > 0 && (
-                  <div className="news-tags-container">
-                  <span>Trending with</span>  
+                  <div className="news-tags-container" >
+                    <span>Trending with</span>
                     {news.tag.map((tag) => (
                       <span className="news-tag">{tag}</span>
                     ))}
@@ -36,18 +35,7 @@ const News: React.FC = () => {
                 {news.id === 1 ? (
                   <img src={news.img} className="news-img" />
                 ) : (
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    width="24"
-                    height="24"
-                    fill="#7c7c7c"
-                    className="news-more"
-                  >
-                    <g>
-                      <path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path>
-                    </g>
-                  </svg>
+                  <More fill="#7c7c7c" width={24} height={24} />
                 )}
               </div>
             </div>
