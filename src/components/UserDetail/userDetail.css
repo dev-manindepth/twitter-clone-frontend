@@ -1,0 +1,19 @@
+.tweet-user {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0;
+}
+.tweet-user-detail {
+  display: flex;
+  gap: 0.5rem;
+}
+.tweet-userId,
+.tweet-created,
+.tweet-reply {
+  color: #7c7c7c;
+}
+
+.tweet-postId {
+  color: #1d9bf0;
+}

@@ -1,0 +1,21 @@
+.search-container {
+  width: 100%;
+  height: fit-content;
+  border-radius: 4rem;
+  background-color: #f7f9f9;
+  overflow: hidden;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+.search-input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  background-color: inherit;
+}
+.search-icon {
+  width: 24px;
+  object-fit: contain;
+}

@@ -1,0 +1,129 @@
+.sidenav-container {
+  position: sticky;
+  top: 0;
+  width: 250px;
+  display: flex;
+  place-self: start;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.logo-container {
+  padding: 1rem;
+}
+.nav-container {
+  display: flex;
+  flex-direction: column;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 1rem;
+}
+.nav-item img {
+  width: 30px;
+}
+.nav-title {
+  font-size: 1.2rem;
+}
+.nav-item:hover {
+  background-color: rgba(15, 20, 25, 0.1);
+  border-radius: 5rem;
+  width: fit-content;
+  cursor: pointer;
+}
+.tweet-btn-container {
+  margin: 1.5rem 0;
+}
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.8rem;
+  margin-bottom: 0.5rem;
+  width: 93%;
+}
+.profile-container:hover {
+  border-radius: 5rem;
+  background-color: rgba(15, 20, 25, 0.1);
+  cursor: pointer;
+}
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.tweet-btn {
+  padding: 0.8rem;
+  width: 90%;
+  font-size: 1.2rem;
+  border: none;
+  background-color: #1d9bf0;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 15rem;
+  cursor: pointer;
+}
+
+.tweet-btn-small-container {
+  background-color: #1d9bf0;
+  width: fit-content;
+  padding: 0.8rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  display: none;
+}
+
+.profile-data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.profile-name {
+  font-weight: bold;
+}
+.profile-id {
+  color: rgb(83, 100, 113);
+}
+
+@media (max-width: 1300px) {
+  .sidenav-container {
+    padding: 0 0.8rem;
+    width: fit-content;
+    align-items: center;
+  }
+  .tweet-btn-small-container {
+    display: block;
+  }
+  .nav-title {
+    display: none;
+  }
+  .tweet-btn {
+    display: none;
+  }
+  .profile-data {
+    display: none;
+  }
+  .more {
+    display: none;
+  }
+  .tweet-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .sidenav-container {
+    display: none;
+  }
+}

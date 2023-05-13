@@ -1,0 +1,28 @@
+.rightmenu-container {
+  position: sticky;
+  top: 0;
+  width: 350px;
+  display: flex;
+  place-self: start;
+  height: 100vh;
+  margin-left: 2rem;
+  padding: 0.5rem 0;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.random {
+  background-color: #f7f9f9;
+}
+
+@media (max-width: 1100px) {
+  .rightmenu-container {
+    width: 335px;
+  }
+}
+
+@media (max-width: 1075px) {
+  .rightmenu-container {
+    display: none;
+  }
+}
