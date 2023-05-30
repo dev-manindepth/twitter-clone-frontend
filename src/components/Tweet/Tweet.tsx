@@ -2,71 +2,67 @@ import React from "react";
 import "./tweet.css";
 import TweetAction from "../TweetAction/TweetAction";
 import UserDetail from "../UserDetail/UserDetail";
+import { ITweet } from "../../types";
 interface ITweetProps {
-  tweet: any;
+  tweets: ITweet[];
+  idx:number;
 }
-const Tweet: React.FC<ITweetProps> = ({ tweet }) => {
+const Tweet: React.FC<ITweetProps> = ({ tweets,idx }) => {
+  const incrementLike=(like:number)=>{
+    console.log(like);
+     like = like+1;
+     console.log('new like',like);
+     return like;
+  }
   return (
-    <div className="tweet-container">
-      <div className="tweet-info-wrapper">
-        <div className="tweet-info">
-          <div className="tweet-avatar">
-            <img src={tweet.avatar} alt="" className="avatar" />
-            {tweet.thread.length || tweet.comment.length ? (
-              <>
-                <div className="vertical-line"></div>
-              </>
-            ) : null}
-          </div>
-          <div className="tweet-content-container">
-
-            <UserDetail tweet={tweet} isComment={false}/>
-            <div className="tweet-content">
-              <div>{tweet.text}</div>
-              <div className={`${tweet.img ? "tweet-image-wrapper" : ""}`}>
-                {tweet.img && <img src={tweet.img} className="tweet-image" />}
-              </div>
-              <TweetAction
-                comment={tweet.comment.length}
-                like={tweet.like}
-                retweet={tweet.retweets}
-                view={tweet.view}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      {tweet.thread.length || tweet.comment.length ? (
-        <div className="tweet-thread-comment-wrapper">
-          <div className="tweet-thread-comment">
-            {(tweet.thread.length && tweet.comment.length) ||
-            tweet.thread.length ? (
-              <>
-                <img src={tweet.avatar} alt="" className="avatar-mini" />
-                <div className="tweet-thread-more">Show this thread</div>
-              </>
-            ) : tweet.comment.length > 0 ? (
-              <>
-                <img
-                  src={tweet.comment[0].avatar}
-                  alt="profile"
-                  className="avatar"
-                />
-                <div className="tweet-highlight-comment">
-                  <UserDetail tweet={tweet.comment[0]} isComment={true} />
-                  {tweet.comment[0].text}
-                  <TweetAction
-                    comment={tweet.comment.length ?? 0}
-                    like={tweet.comment[0].like ?? 0}
-                    view={tweet.comment[0].view ?? 0}
-                    retweet={tweet.comment[0].retweets ?? 0}
+    <div className="tweet-container" key={idx}>
+      {tweets &&
+        tweets.length > 0 &&
+        tweets.map(
+          (
+            { user, tweetTime, textArea, replies, reTweets, views, likes ,id,threadId },
+            idx
+          ) => (
+            <div className="tweet-info-wrapper" key={id} data-id={threadId}>
+              <div className="tweet-info">
+                <div className="tweet-avatar">
+                  <img
+                    src={user.imageData.url}
+                    alt={user.imageData.alt}
+                    className="avatar"
                   />
+                  {tweets.length !== 1 && idx !== tweets.length - 1 ? (
+                    <div className="vertical-line"></div>
+                  ) : null}
                 </div>
-              </>
-            ) : null}
-          </div>
-        </div>
-      ) : null}
+                <div className="tweet-content-container">
+                  <UserDetail
+                    user={user}
+                    isReply={idx !== 0}
+                  />
+                  <div className="tweet-content">
+                    <div>{textArea}</div>
+                    {/* <div
+                        className={`${tweet.img ? "tweet-image-wrapper" : ""}`}
+                      >
+                        {tweet.img && (
+                          <img src={tweet.img} className="tweet-image" />
+                        )}
+                      </div> */}
+                    <TweetAction
+                      replies={replies}
+                      like={likes}
+                      incrementLike={incrementLike}
+                      retweet={reTweets}
+                      view={views}
+                      threadId={threadId}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        )}
     </div>
   );
 };

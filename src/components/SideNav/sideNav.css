@@ -1,7 +1,7 @@
 .sidenav-container {
   position: sticky;
   top: 0;
-  width: 250px;
+  width: 300px;
   display: flex;
   place-self: start;
   height: 100vh;
@@ -15,10 +15,15 @@
   display: flex;
   flex-direction: column;
 }
+.nav-container a{
+  text-decoration: none;
+  color: black;
+}
 .nav-item {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin:.5rem 0 ;
   padding: 0.7rem 1rem;
 }
 .nav-item img {

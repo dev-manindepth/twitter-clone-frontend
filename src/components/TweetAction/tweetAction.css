@@ -6,7 +6,7 @@
 .tweet-actions {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2rem;
   padding: 1rem 1rem 0.5rem 1rem;
 }
 
@@ -16,7 +16,7 @@
 .tweet-action-view,
 .tweet-action-share {
   display: flex;
-  gap: 1rem;
+  gap: .6rem;
   align-items: center;
   justify-content: center;
   color: #7c7c7c;
@@ -32,26 +32,18 @@
   cursor: pointer;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
   .tweet-actions {
-    gap: 2rem;
+    gap: 1.5rem;
   }
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .tweet-actions {
     gap: 1.4rem;
   }
-}
-
-@media (max-width: 475px) {
-  .tweet-actions {
-    padding: 1rem 0.5rem 0.5rem 0.5rem;
-    gap: 1rem;
-  }
-}
-
-@media (max-width: 450px) {
+} */
+@media (max-width: 650px) {
   .tweet-action-view {
     display: none;
   }
@@ -62,4 +54,19 @@
     width: 100%;
     justify-content: space-between;
   }
+  .tweet-action-comment,
+.tweet-action-retweets,
+.tweet-action-like,
+.tweet-action-view,
+.tweet-action-share {
+  gap: .5rem;
 }
+}
+
+@media (max-width: 475px) {
+  .tweet-actions {
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    gap: .6rem;
+  }
+}
+

@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import "./userDetail.css";
 import { BlueTick, More } from "../SVG/Icon";
+import { IUser } from "../../types";
 interface IUserDetailsProps {
-  tweet: any;
-  isComment: boolean;
+  user: IUser;
+  isReply:boolean
 }
-const UserDetail: React.FC<IUserDetailsProps> = ({ tweet, isComment }) => {
-  const [username, setUsername] = useState(tweet.username);
-  const [userId, setUserId] = useState(tweet.userId);
+const UserDetail: React.FC<IUserDetailsProps> = ({ user, isReply }) => {
+  const [username, setUsername] = useState(user.userName);
+  const [userId, setUserId] = useState(user.userId);
 
   useEffect(() => {
     const handleResize = () => {
@@ -15,8 +16,8 @@ const UserDetail: React.FC<IUserDetailsProps> = ({ tweet, isComment }) => {
         setUsername(`${username.slice(0, 8)}...`);
         setUserId(`${userId.slice(0, 5)}...`);
       } else {
-        setUsername(tweet.username);
-        setUserId(tweet.userId);
+        setUsername(user.userName);
+        setUserId(user.userId);
       }
     };
     window.addEventListener("resize", handleResize);
@@ -28,14 +29,14 @@ const UserDetail: React.FC<IUserDetailsProps> = ({ tweet, isComment }) => {
       <div className="tweet-user">
         <div className="tweet-user-detail">
           <span className="tweet-user-name">{username}</span>
-          {tweet.blueTick && <BlueTick width={18} height={18} fill="#1d9bf0" />}
+          {user.blueTick && <BlueTick width={18} height={18} fill="#1d9bf0" />}
           <span className="tweet-userId">@{userId}</span>
-          <span className="tweet-created">{tweet.createdAt}</span>
+          <span className="tweet-created">{new Date(user.joiningDate).getDate()}</span>
         </div>
-        {isComment && (
+        {isReply && (
           <div>
             <span className="tweet-reply">Replying to </span>{" "}
-            <span className="tweet-postId">@{tweet?.postId}</span>
+            <span className="tweet-postId">@{user.userId}</span>
           </div>
         )}
       </div>
