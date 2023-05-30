@@ -1,50 +1,59 @@
+import { useContext } from "react";
 import { newsData } from "../../data";
+import { ITrendingData } from "../../types";
 import { More } from "../SVG/Icon";
 import "./news.css";
+import { TweetContext } from "../../context/tweetContext";
 
 const News: React.FC = () => {
+  const {
+    tweets: { trendingData },
+  }: { tweets: { trendingData: ITrendingData } } = useContext(TweetContext);
   return (
     <div className="news-container">
-      <div className="news-header">
-        <div>What's happening</div>
-      </div>
-      <div className="news-section">
-        {newsData.map((news) => {
-          return (
-            <div key={news.id} className="news-single-item">
-              <div className="news-info-wrapper">
-                <div className="news-events-category">
-                  <span>{news?.category}</span> <span>{news?.event}</span>
-                </div>
-                <div className="news-description">{news.desc}</div>
+      {trendingData && (
+        <>
+          <div className="news-header">
+            <div>{trendingData.title}</div>
+          </div>
+          <div className="news-section">
+            {trendingData.trends.map(
+              ({ country, text, category, tweets, hashTags },idx) => {
+                return (
+                  <div key={idx} className="news-single-item">
+                    <div className="news-info-wrapper">
+                      <div className="news-events-category">
+                        {category ? (
+                          <span>{category} · Trending</span>
+                        ) : (
+                          <span>Trending in {country}</span>
+                        )}
+                      </div>
+                      <div className="news-description">{text}</div>
 
-                {news.tag && news.tag.length > 0 && (
-                  <div className="news-tags-container" >
-                    <span>Trending with</span>
-                    {news.tag.map((tag) => (
-                      <span className="news-tag">{tag}</span>
-                    ))}
+                      {hashTags && hashTags.length > 0 && (
+                        <div className="news-tags-container">
+                          <span>Trending with</span>
+                          {hashTags.map((tag,idx) => (
+                            <span className="news-tag" key={idx}>{tag}</span>
+                          ))}
+                        </div>
+                      )}
+
+                      {tweets && (
+                        <div className="news-tweets">{tweets} Tweets</div>
+                      )}
+                    </div>
                   </div>
-                )}
-
-                {news.tweets && (
-                  <div className="news-tweets">{news.tweets} Tweets</div>
-                )}
-              </div>
-              <div className="img-more">
-                {news.id === 1 ? (
-                  <img src={news.img} className="news-img" />
-                ) : (
-                  <More fill="#7c7c7c" width={24} height={24} />
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <div>
-        <div className="show-more">Show more</div>
-      </div>
+                );
+              }
+            )}
+          </div>
+          <div>
+            <div className="show-more">Show more</div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

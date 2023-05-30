@@ -3,12 +3,23 @@ import "./tweetInput.css";
 import { TweetContext } from "../../context/tweetContext";
 import { UserContext } from "../../context/userContext";
 import { Calendar, Emoji, Gallery, Gif, Location, Poll } from "../SVG/Icon";
+import { IUser } from "../../types";
+
+interface ITweetInput{
+  placeholder:string;
+}
+
 const TweetInput: React.FC = () => {
   const [tweet, setTweet] = useState("");
   const { addNewTweet } = useContext(TweetContext);
   const {
     user: { img },
   } = useContext(UserContext);
+
+  const {
+    tweets: { loggedInUser },
+  }: { tweets: { loggedInUser: Pick<IUser, "imageData"> } } =
+    useContext(TweetContext);
 
   const addTweet = () => {
     if (!tweet) {
@@ -25,7 +36,7 @@ const TweetInput: React.FC = () => {
   return (
     <div className="tweet-input-wrapper">
       <div className="profile-wrapper">
-        <img src={img} alt="profile " className="profile-imgage" />
+       {loggedInUser &&<img src={loggedInUser.imageData.url} alt={loggedInUser.imageData.alt} className="profile-imgage" />} 
       </div>
       <div className="input-wrapper">
         <textarea

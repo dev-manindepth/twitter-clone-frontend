@@ -5,12 +5,14 @@ import RightMenu from "./components/RightMenu/RightMenu";
 import SideNav from "./components/SideNav/SideNav";
 
 function App() {
-  return <div className="container">
-    <SideNav/>
-    <Feed/>
-    <RightMenu/>
-    <BottomNav/>
-  </div>;
+  return (
+    <div className="container">
+      <SideNav />
+      <Feed />
+      <RightMenu />
+      <BottomNav />
+    </div>
+  );
 }
 
 export default App;
