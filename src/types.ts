@@ -72,8 +72,8 @@ export interface ITweetButton {
 export interface IResponse {
   headerData: IHeaderData;
   loggedInUser: IUser;
-  sideNavigationButtons: ISideNavigationButtons;
-  trendingData: ITrendingData[];
+  sideNavigationButtons: ISideNavigationButtons[];
+  trendingData: ITrendingData;
   followData: IFollowData;
   tweetThreads: ITweet[][];
   tweetButton: ITweetButton;

@@ -1,25 +1,25 @@
-import { useContext, useState } from "react";
+import { Suspense, useContext, useState } from "react";
 import "./tweetInput.css";
 import { TweetContext } from "../../context/tweetContext";
-import { UserContext } from "../../context/userContext";
 import { Calendar, Emoji, Gallery, Gif, Location, Poll } from "../SVG/Icon";
 import { IUser } from "../../types";
+import { ColorRing } from "react-loader-spinner";
+import SuspenseImage from "../SuspenseImage/SuspenseImage";
 
-interface ITweetInput{
-  placeholder:string;
+interface ITweetInput {
+  placeholder: string;
 }
 
 const TweetInput: React.FC = () => {
   const [tweet, setTweet] = useState("");
-  const { addNewTweet } = useContext(TweetContext);
-  const {
-    user: { img },
-  } = useContext(UserContext);
+  const tweetContext = useContext(TweetContext);
+  const loggedInUser = tweetContext?.tweets.loggedInUser;
+  const addNewTweet = tweetContext!.addNewTweet;
 
-  const {
-    tweets: { loggedInUser },
-  }: { tweets: { loggedInUser: Pick<IUser, "imageData"> } } =
-    useContext(TweetContext);
+  // const {
+  //   tweets: { loggedInUser },
+  // }: { tweets: { loggedInUser: Pick<IUser, "imageData"> } } =
+  //   useContext(TweetContext);
 
   const addTweet = () => {
     if (!tweet) {
@@ -36,7 +36,27 @@ const TweetInput: React.FC = () => {
   return (
     <div className="tweet-input-wrapper">
       <div className="profile-wrapper">
-       {loggedInUser &&<img src={loggedInUser.imageData.url} alt={loggedInUser.imageData.alt} className="profile-imgage" />} 
+        {loggedInUser && (
+          <Suspense
+            fallback={
+              <ColorRing
+                visible={true}
+                height="30"
+                width="30"
+                ariaLabel="blocks-loading"
+                wrapperStyle={{}}
+                wrapperClass="blocks-wrapper"
+                colors={["#8ec8ef", "#8ec8ef", "#8ec8ef", "#8ec8ef", "#8ec8ef"]}
+              />
+            }
+          >
+            <SuspenseImage
+              src={loggedInUser.imageData.url}
+              alt={loggedInUser.imageData.alt}
+              className="profile-imgage"
+            />
+          </Suspense>
+        )}
       </div>
       <div className="input-wrapper">
         <textarea

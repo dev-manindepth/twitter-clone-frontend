@@ -1,22 +1,17 @@
-import React, { useContext } from "react";
+import React, { Suspense, useContext } from "react";
 import "./feed.css";
 import TweetInput from "../TweetInput/TweetInput";
 import TweetList from "../TweetList/TweetList";
 import twitterLogo from "../../assets/twitterLogo.png";
 import { TweetContext } from "../../context/tweetContext";
-import { UserContext } from "../../context/userContext";
 import { TweetHand } from "../SVG/Icon";
 import {  IUser } from "../../types";
+import { ColorRing } from "react-loader-spinner";
 
 const Feed: React.FC = () => {
-  const {
-    tweets: { loggedInUser },
-  }: {
-    tweets: {
-      loggedInUser: Pick<IUser, "imageData">;
-    
-    };
-  } = useContext(TweetContext);
+  const  tweetContext = useContext(TweetContext) ;
+  const loggedInUser = tweetContext?.tweets?.loggedInUser;
+
   return (
     <div className="feed-container">
       <div className="feed-header">
@@ -40,7 +35,21 @@ const Feed: React.FC = () => {
       </div>
 
       <TweetInput />
-      <TweetList />
+      <Suspense
+        fallback={
+          <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            colors={["#8ec8ef", "#8ec8ef", "#8ec8ef", "#8ec8ef", "#8ec8ef"]}
+          />
+        }
+      >
+        <TweetList />
+      </Suspense>
 
       <div className="tweet-bottom-btn-container">
         <TweetHand fill="#fff" height={24} width={24} />

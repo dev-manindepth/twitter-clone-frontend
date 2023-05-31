@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { UserProvider } from "./context/userContext";
 import { TweetProvider } from "./context/tweetContext";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ColorRing } from "react-loader-spinner";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,12 +13,23 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Router>
-
-    <TweetProvider>
-    <UserProvider>
-      <App />
-    </UserProvider>
-    </TweetProvider>
+      <Suspense
+        fallback={
+          <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            colors={["#8ec8ef", "#8ec8ef", "#8ec8ef", "#8ec8ef", "#8ec8ef"]}
+          />
+        }
+      >
+        <TweetProvider>
+          <App />
+        </TweetProvider>
+      </Suspense>
     </Router>
   </React.StrictMode>
 );
