@@ -22,7 +22,8 @@ const TweetAction: React.FC<ITweetActionProps> = ({
   threadId
 }) => {
   const [showReplyModal, setShowReplyModal] = useState(false);
-  const { likeTweet } = useContext(TweetContext);
+  const tweetContext = useContext(TweetContext);
+  const likeTweet = tweetContext!.likeTweet;
   const handleModalClose = () => {
     setShowReplyModal(false);
   };

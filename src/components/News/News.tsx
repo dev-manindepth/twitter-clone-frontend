@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import { newsData } from "../../data";
 import { ITrendingData } from "../../types";
-import { More } from "../SVG/Icon";
 import "./news.css";
 import { TweetContext } from "../../context/tweetContext";
 
 const News: React.FC = () => {
-  const {
-    tweets: { trendingData },
-  }: { tweets: { trendingData: ITrendingData } } = useContext(TweetContext);
+  // const {
+  //   tweets: { trendingData },
+  // }: { tweets: { trendingData: ITrendingData } } = useContext(TweetContext);
+  const tweetContext = useContext(TweetContext);
+  const trendingData = tweetContext?.tweets?.trendingData;
   return (
     <div className="news-container">
       {trendingData && (
@@ -18,7 +18,7 @@ const News: React.FC = () => {
           </div>
           <div className="news-section">
             {trendingData.trends.map(
-              ({ country, text, category, tweets, hashTags },idx) => {
+              ({ country, text, category, tweets, hashTags }, idx) => {
                 return (
                   <div key={idx} className="news-single-item">
                     <div className="news-info-wrapper">
@@ -34,8 +34,10 @@ const News: React.FC = () => {
                       {hashTags && hashTags.length > 0 && (
                         <div className="news-tags-container">
                           <span>Trending with</span>
-                          {hashTags.map((tag,idx) => (
-                            <span className="news-tag" key={idx}>{tag}</span>
+                          {hashTags.map((tag, idx) => (
+                            <span className="news-tag" key={idx}>
+                              {tag}
+                            </span>
                           ))}
                         </div>
                       )}

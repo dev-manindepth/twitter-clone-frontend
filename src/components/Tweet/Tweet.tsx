@@ -1,8 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import "./tweet.css";
 import TweetAction from "../TweetAction/TweetAction";
 import UserDetail from "../UserDetail/UserDetail";
 import { ITweet } from "../../types";
+import SuspenseImage from "../SuspenseImage/SuspenseImage";
+import { ColorRing } from "react-loader-spinner";
 interface ITweetProps {
   tweets: ITweet[];
   idx:number;
@@ -20,35 +22,60 @@ const Tweet: React.FC<ITweetProps> = ({ tweets,idx }) => {
         tweets.length > 0 &&
         tweets.map(
           (
-            { user, tweetTime, textArea, replies, reTweets, views, likes ,id,threadId },
+            {
+              user,
+              tweetTime,
+              textArea,
+              replies,
+              reTweets,
+              views,
+              likes,
+              id,
+              threadId,
+            },
             idx
           ) => (
             <div className="tweet-info-wrapper" key={id} data-id={threadId}>
               <div className="tweet-info">
                 <div className="tweet-avatar">
-                  <img
+                  <Suspense
+                    fallback={
+                      <ColorRing
+                        visible={true}
+                        height="30"
+                        width="30"
+                        ariaLabel="blocks-loading"
+                        wrapperStyle={{}}
+                        wrapperClass="blocks-wrapper"
+                        colors={[
+                          "#8ec8ef",
+                          "#8ec8ef",
+                          "#8ec8ef",
+                          "#8ec8ef",
+                          "#8ec8ef",
+                        ]}
+                      />
+                    }
+                  >
+                    <SuspenseImage
+                      alt={user.imageData.alt}
+                      src={user.imageData.url}
+                      className="avatar"
+                    ></SuspenseImage>
+                  </Suspense>
+                  {/* <img
                     src={user.imageData.url}
                     alt={user.imageData.alt}
                     className="avatar"
-                  />
+                  /> */}
                   {tweets.length !== 1 && idx !== tweets.length - 1 ? (
                     <div className="vertical-line"></div>
                   ) : null}
                 </div>
                 <div className="tweet-content-container">
-                  <UserDetail
-                    user={user}
-                    isReply={idx !== 0}
-                  />
+                  <UserDetail user={user} isReply={idx !== 0} />
                   <div className="tweet-content">
                     <div>{textArea}</div>
-                    {/* <div
-                        className={`${tweet.img ? "tweet-image-wrapper" : ""}`}
-                      >
-                        {tweet.img && (
-                          <img src={tweet.img} className="tweet-image" />
-                        )}
-                      </div> */}
                     <TweetAction
                       replies={replies}
                       like={likes}

@@ -1,14 +1,17 @@
-import { useContext } from "react";
+import { Suspense, useContext } from "react";
 import { whoToFollow } from "../../data";
 import { IFollowData } from "../../types";
 import { BlueTick } from "../SVG/Icon";
 import "./whoToFollow.css";
 import { TweetContext } from "../../context/tweetContext";
+import SuspenseImage from "../SuspenseImage/SuspenseImage";
+import { ColorRing } from "react-loader-spinner";
 const WhoToFollow: React.FC = () => {
-  const {
-    tweets: { followData },
-  }: { tweets: { followData: IFollowData } } = useContext(TweetContext);
-
+  // const {
+  //   tweets: { followData },
+  // }: { tweets: { followData: IFollowData } } = useContext(TweetContext);
+  const tweetContext = useContext(TweetContext);
+  const followData = tweetContext?.tweets?.followData;
   return (
     <div className="whotofollow-container">
       {followData && (
@@ -24,7 +27,32 @@ const WhoToFollow: React.FC = () => {
                   return (
                     <div key={userId + idx} className="whotofollow-list-user">
                       <div className="profile-img-wrapper">
-                        <img src={url} alt={alt} className="profile-img" />
+                        <Suspense
+                          fallback={
+                            <ColorRing
+                              visible={true}
+                              height="30"
+                              width="30"
+                              ariaLabel="blocks-loading"
+                              wrapperStyle={{}}
+                              wrapperClass="blocks-wrapper"
+                              colors={[
+                                "#8ec8ef",
+                                "#8ec8ef",
+                                "#8ec8ef",
+                                "#8ec8ef",
+                                "#8ec8ef",
+                              ]}
+                            />
+                          }
+                        >
+                          <SuspenseImage
+                            src={url}
+                            alt={alt}
+                            className="profile-img"
+                          />
+                        </Suspense>
+                        {/* <img src={url} alt={alt} className="profile-img" /> */}
                       </div>
                       <div className="profile-info-wrapper">
                         <div>
